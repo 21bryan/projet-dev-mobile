@@ -8,8 +8,36 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'landing',
     pathMatch: 'full'
+  },
+  {
+    path: 'authentification',
+    loadChildren: () => import('./docs/authentification/authentification.module').then( m => m.AuthentificationPageModule)
+  },
+  {
+    path: 'creer',
+    loadChildren: () => import('./docs/creer/creer.module').then( m => m.CreerPageModule)
+  },
+  {
+    path: 'landing',
+    loadChildren: () => import('./docs/landing/landing.module').then( m => m.LandingPageModule)
+  },
+  {
+    path: 'localisation',
+    loadChildren: () => import('./docs/localisation/localisation.module').then( m => m.LocalisationPageModule)
+  },
+  {
+    path: 'notifications',
+    loadChildren: () => import('./docs/notifications/notifications.module').then( m => m.NotificationsPageModule)
+  },
+  {
+    path: 'onglets',
+    loadChildren: () => import('./docs/onglets/onglets.module').then( m => m.OngletsPageModule)
+  },
+  {
+    path: 'qrcode',
+    loadChildren: () => import('./docs/qrcode/qrcode.module').then( m => m.QrcodePageModule)
   },
 ];
 

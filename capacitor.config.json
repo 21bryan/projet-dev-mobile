@@ -1,0 +1,16 @@
+{
+    "plugins": {
+      "Geolocation": {
+        "key": ""
+      }
+    },
+    
+      "plugins": {
+        "PushNotifications": {
+          "presentationOptions": ["badge", "sound", "alert"]
+        }
+      }
+    
+  
+
+}
