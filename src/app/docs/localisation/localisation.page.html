@@ -5,9 +5,17 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-button (click)="getCurrentLocation()">Obtenir la position actuelle</ion-button>
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">localisation</ion-title>
+      <ion-title>
+        Geolocation
+      </ion-title>
     </ion-toolbar>
   </ion-header>
+  
+  <ion-content src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtt01FLh3IV-cQyofd0w8zUQOFKUr6944">
+    <div id="map"></div>
+  </ion-content>
+  
 </ion-content>

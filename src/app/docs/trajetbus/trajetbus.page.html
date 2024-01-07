@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>trajetbus</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ <ion-item *ngFor="let item of items">
+<ion-label>
+  <p>{{item.arrivee}}</p>
+  <p>{{item.depart}}</p>
+  <p>{{item.nombus}}</p>
+  <!-- <p>{{item.destination.Latitude}}</p>
+  <p>{{item.destination.Longitude}}</p>
+  <p>{{item.heure_depart.Date}}</p>
+  <p>{{item.heure_depart.Heure}}</p>
+  <p>{{item.lieu_depart.Latitude}}</p>
+  <p>{{item.lieu_depart.Longitude}}</p> -->
+  
+</ion-label>
+ </ion-item>
+</ion-content>

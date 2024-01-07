@@ -4,7 +4,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    redirectTo: 'onglets',
+    pathMatch: 'full'
   },
   {
     path: '',
@@ -38,6 +39,18 @@ const routes: Routes = [
   {
     path: 'qrcode',
     loadChildren: () => import('./docs/qrcode/qrcode.module').then( m => m.QrcodePageModule)
+  },
+  {
+    path: 'trajetbus',
+    loadChildren: () => import('./docs/trajetbus/trajetbus.module').then( m => m.TrajetbusPageModule)
+  },
+  {
+    path: 'deconnexion',
+    loadChildren: () => import('./docs/deconnexion/deconnexion.module').then( m => m.DeconnexionPageModule)
+  },
+  {
+    path: 'infos',
+    loadChildren: () => import('./docs/infos/infos.module').then( m => m.InfosPageModule)
   },
 ];
 

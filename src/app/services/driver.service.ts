@@ -1,48 +1,33 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from 'rxjs';
-
-@Injectable({
-  providedIn: 'root'
-})
+ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+ import { Observable, map } from 'rxjs';
+ 
+ @Injectable({
+   providedIn: 'root'
+ })
 export class DriverService {
 
-  constructor(private db: AngularFireDatabase) {}
+private itemsCollection: AngularFirestoreCollection<any>;
+items: Observable<any[]>;
 
-  // Authentifier un chauffeur
-  authenticateDriver(driverId: string, password: string): Observable<any> {
-    return this.db.list('/drivers', (ref) =>
-      ref.orderByChild('driverId').equalTo(driverId).limitToFirst(1)
-    ).valueChanges();
-  }
+constructor(private firestore: AngularFirestore) {
+  this.itemsCollection = this.firestore.collection<any>('/chauffeurs');
+  // 'votreCollection' est le nom de votre collection Firestore, remplacez-le par le nom réel.
 
-  // Scanner le QR Code
-  scanQRCode(qrCode: string): Observable<any> {
-    //  logique de vérification du QR Code
-    
-    return new Observable<any>((observer) => {
-      // Implémentation de la logique 
-      const studentInfo = null; // Remplacez cela par votre logique de vérification du QR Code
-      observer.next(studentInfo);
-      observer.complete();
-    });
-  }
-
-  // Mettre à jour la localisation
-  updateLocation(driverId: string, location: any) {
-    return this.db.object(`/drivers/${driverId}/location`).update(location);
-  }
-
-  // Comptabiliser le nombre d'étudiants
-  countStudents(period: string): Observable<number> {
-    //  logique de comptage en fonction de la période spécifiée
-    
-    return new Observable<number>((observer) => {
-      // Implémentez la logique ici
-      const count = 0; // Remplacez cela par votre logique de comptage
-      observer.next(count);
-      observer.complete();
-    });
-  }
+  this.items = this.itemsCollection.snapshotChanges().pipe(
+    map(actions => actions.map(a => {
+      const data = a.payload.doc.data();
+      const id = a.payload.doc.id;
+      return { id, ...data };
+    }))
+  );
 }
 
+getItems(): Observable<any[]> {
+  return this.items;
+}
+
+getItemById(itemId: string): Observable<any> {
+  return this.itemsCollection.doc<any>(itemId).valueChanges();
+}
+}

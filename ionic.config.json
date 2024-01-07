@@ -1,7 +1,8 @@
 {
   "name": "projet-ionic7",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

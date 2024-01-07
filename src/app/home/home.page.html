@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h3><strong>Welcome Bryan!</strong></h3>
+  <!-- <h3><strong>Welcome Bryan!</strong></h3>
   <div>
     <img src="assets/images/1.jpg" >
   </div>
@@ -62,5 +62,46 @@
       </ion-col>
     </ion-row>
 
-      </ion-grid>
+      </ion-grid> -->
+
+      <h3><strong>Welcome Bryan!</strong></h3>
+      
+  <div>
+    <ion-menu-toggle></ion-menu-toggle>
+    <img src="assets/images/1.jpg" >
+  </div>
+  <h3><strong>choose your bus</strong></h3>
+  <div>
+    <ion-icon name="log-out-outline" (click)="logout()"></ion-icon>
+    <p>se deconnecter</p>
+ </div> 
+
+      <ion-grid >
+        <ion-row >
+          <ion-col size="6" *ngFor="let item of items" (click)="goto(item)">
+<ion-card >
+  <img [src]="item.image" >
+<ion-item lines="none">
+<ion-label>
+  <ion-card-title>{{item.nombus}}</ion-card-title>
+ <p>places:{{item.nbreplaces}}</p>
+ <p>couleur{{item.couleur}}</p>
+
+</ion-label>
+</ion-item>
+</ion-card>
+</ion-col>
+</ion-row>
+
+  </ion-grid>
+ 
+
+
+
+ <!-- <div class="ion-padding">
+<ion-button (click)="addBus(Bus)" expand="block">Ajouter</ion-button>
+</div> 
+ -->
+
+
 </ion-content>
